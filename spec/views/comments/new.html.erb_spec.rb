@@ -1,10 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe "comments/new", type: :view do
+  before(:all) do
+    @post = Post.create!(title: "I am not nil!", body: "Neither am I!")
+  end
   before(:each) do
     assign(:comment, Comment.new(
-      :post => nil,
-      :body => "MyText"
+      post: @post,
+      body: "MyText"
     ))
   end
 
